@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YouTube</title>
+    <link rel="icon" type="image/x-icon" href="./videos/favicon (2).ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./output.css" />
+    <style>
+      i {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body class="mx-7 wrapper z-50">
+    <!-- wrapper of all contents -->
+    <div class="relative">
+      <nav
+        class="flex items-center max-w-[100vw] justify-between fixed left-0 px-6 w-full top-0 bg-white z-40 py-4"
+      >
+        <!-- nav left -->
+        <div class="text-2xl space-x-7">
+          <i
+            class="fa-solid fa-bars peer-[bar-open-menu]:"
+            id="bar-open-menu"
+          ></i>
+          <span class="tracking-[-3px]">
+            <i class="fa-brands fa-youtube text-red-600"></i>
+            <span class="font-bold tracking-tighter"
+              >YouTube<sup class="font-thin">BD</sup></span
+            >
+          </span>
+        </div>
+        <!-- nav middle -->
+        <div class="flex gap-5">
+          <div class="w-[550px] relative">
+            <input
+              type="text"
+              placeholder="Search"
+              id="search-box"
+              class="rounded-3xl ring-2 ring-gray-200 outline-none w-full px-4 py-1 text-lg"
+            />
+            <label for="search-box">
+              <i
+                class="fa-solid fa-magnifying-glass absolute rounded-r-3xl bg-gray-100 hover:bg-gray-200 cursor-pointer right-0 top-0 h-[37px] w-16 flex items-center justify-center border-l-2 text-xl"
+              ></i>
+            </label>
+          </div>
+          <div>
+            <i
+              class="fa-solid fa-microphone size-10 rounded-full bg-gray-100 hover:bg-gray-200 flex justify-center items-center"
+            ></i>
+          </div>
+        </div>
+        <!-- nav right icons -->
+        <div class="flex gap-3">
+          <i
+            class="size-10 hover:bg-gray-200 rounded-full flex justify-center items-center fa-solid fa-video"
+          ></i>
+          <i
+            class="size-10 hover:bg-gray-200 rounded-full flex justify-center items-center fa-solid fa-bell"
+          ></i>
+          <img
+            class="size-8 rounded-full"
+            src="./videos/passport p.jpg"
+            alt=""
+          />
+        </div>
+      </nav>
+      <!-- left navigation icons -->
+      <div
+        class="w-20 overflow-hidden h-[25rem] flex flex-col justify-evenly items-center -translate-x-8 fixed top-16 bg-white z-40"
+      >
+        <span class="text-center hover:bg-gray-200 p-4 rounded-lg">
+          <i class="fa-solid fa-house flex flex-col" id="home"></i>
+          <label for="home" class="text-[12px]">Home</label>
+        </span>
+        <span class="text-center hover:bg-gray-200 p-4 rounded-lg">
+          <i class="fa-solid fa-film flex flex-col" id="shorts"></i>
+          <label for="shorts" class="text-[12px]">Shorts</label>
+        </span>
+        <span class="text-center hover:bg-gray-200 p-4 rounded-lg">
+          <i
+            class="fa-regular fa-share-from-square flex flex-col"
+            id="Subscription"
+          ></i>
+          <label for="Subscription" class="text-[12px]">Subscription</label>
+        </span>
+        <span class="text-center hover:bg-gray-200 p-4 rounded-lg">
+          <i class="fa-regular fa-square-check flex flex-col" id="You"></i>
+          <label for="You" class="text-[12px]">You</label>
+        </span>
+        <span class="text-center hover:bg-gray-200 p-4 rounded-lg">
+          <i class="fa-solid fa-arrow-down flex flex-col" id="Downloads"></i>
+          <label for="Downloads" class="text-[12px]">Downloads</label>
+        </span>
+      </div>
+      <!-- left navigation floating panel -->
+      <div
+        class="fixed overflow-auto h-full top-[-6px] left-[-.5rem] bg-white pl-6 pr-2 w-1/5 py-4 hidden z-50"
+        id="side-nav-panel"
+      >
+        <!-- youtube logo  -->
+        <div class="text-2xl space-x-7">
+          <i class="fa-solid fa-bars" id="bar-close-menu"></i>
+          <span class="tracking-[-3px]">
+            <i class="fa-brands fa-youtube text-red-600"></i>
+            <span class="font-bold tracking-tighter"
+              >YouTube<sup class="font-thin">BD</sup></span
+            >
+          </span>
+        </div>
+        <!-- floating panel links -->
+        <div
+          class="flex flex-col font-light gap-4 text-lg border-b-2 py-6 border-gray-200"
+        >
+          <a
+            class="space-x-6 cursor-pointer hover:bg-gray-300 px-4 py-2 rounded-xl"
+          >
+            <i class="fa-solid fa-house" id="home"></i>
+            <label for="home" class="">Home</label>
+          </a>
+
+          <a
+            class="space-x-6 cursor-pointer hover:bg-gray-300 px-4 py-2 rounded-xl"
+          >
+            <i class="fa-solid fa-film" id="shorts"></i>
+            <label for="shorts" class="">Shorts</label>
+          </a>
+          <a
+            class="space-x-6 cursor-pointer hover:bg-gray-300 px-4 py-2 rounded-xl"
+          >
+            <i class="fa-regular fa-share-from-square" id="Subscription"></i>
+            <label for="Subscription" class="">Subscription</label>
+          </a>
+        </div>
+        <!-- links under the line -->
+        <div
+          class="flex flex-col font-light gap-4 text-lg border-b-2 py-6 border-gray-200"
+        >
+          <a
+            class="space-x-6 cursor-pointer hover:bg-gray-300 px-4 py-2 rounded-xl"
+          >
+            <i class="fa-regular fa-user"></i>
+            <label for="home" class="">Your Channel</label>
+          </a>
+          <a
+            class="space-x-6 cursor-pointer hover:bg-gray-300 px-4 py-2 rounded-xl"
+          >
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            <label for="home" class="">History</label>
+          </a>
+          <a
+            class="space-x-6 cursor-pointer hover:bg-gray-300 px-4 py-2 rounded-xl"
+          >
+            <i class="fa-regular fa-chart-bar"></i>
+            <label for="home" class="">Playlists</label>
+          </a>
+          <a
+            class="space-x-6 cursor-pointer hover:bg-gray-300 px-4 py-2 rounded-xl"
+          >
+            <i class="fa-brands fa-square-youtube"></i>
+            <label for="home" class="">Your videos</label>
+          </a>
+          <a
+            class="space-x-6 cursor-pointer hover:bg-gray-300 px-4 py-2 rounded-xl"
+          >
+            <i class="fa-regular fa-clock"></i>
+            <label for="home" class="">Watch later</label>
+          </a>
+          <a
+            class="space-x-6 cursor-pointer hover:bg-gray-300 px-4 py-2 rounded-xl"
+          >
+            <i class="fa-regular fa-thumbs-up"></i>
+            <label for="home" class="">Liked videos</label>
+          </a>
+          <a
+            class="space-x-6 cursor-pointer hover:bg-gray-300 px-4 py-2 rounded-xl"
+          >
+            <i class="fa-solid fa-arrow-down"></i>
+            <label for="home" class="">Downloads</label>
+          </a>
+        </div>
+      </div>
+
+      <!-- home page videos -->
+      <div
+        class="grid grid-cols-3 gap-12 justify-between absolute top-20 left-20"
+      >
+        <!-- youtube video iframe - 01 -->
+        <div class="rounded-md">
+          <iframe
+            width="350"
+            height="208"
+            src="https://www.youtube.com/embed/82ivI2lCPbg?si=JDVKCn2WU3IXR6jW"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+          <div class="py-2">
+            <div class="flex gap-4">
+              <img
+                class="size-12 rounded-full"
+                src="./images/fire_logo_02.jpg"
+                alt=""
+              />
+              <p class="font-semibold">
+                A1 Express (2021) 1080p WEB-DL [Dual Audio] [Hindi+Telugu] ESub
+                x264.mkv
+              </p>
+            </div>
+            <span class="text-gray-700 flex flex-col px-16 pt-1 leading-4">
+              <p>Siam Mahamud</p>
+              <p>50k views . 2 hours ago</p>
+            </span>
+          </div>
+        </div>
+        <!-- youtube video iframe - 02 -->
+        <div class="rounded-md">
+          <iframe
+            width="350"
+            height="208"
+            src="https://www.youtube.com/embed/w8yeQz8qkVs?si=sWyad-BOj01o1i1m"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+          <div class="py-2">
+            <div class="flex gap-4">
+              <img
+                class="size-12 rounded-full"
+                src="./images/fire_logo_02.jpg"
+                alt=""
+              />
+              <p class="font-semibold">
+                A1 Express (2021) 1080p WEB-DL [Dual Audio] [Hindi+Telugu] ESub
+                x264.mkv
+              </p>
+            </div>
+            <span class="text-gray-700 flex flex-col px-16 pt-1 leading-4">
+              <p>Siam Mahamud</p>
+              <p>50k views . 2 hours ago</p>
+            </span>
+          </div>
+        </div>
+        <!-- iframe -03  -->
+        <div class="rounded-md">
+          <iframe
+            width="350"
+            height="208"
+            src="https://www.youtube.com/embed/_KmfTiW2D_M?si=xD8W1PsjEjM1g3eL"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+          <div class="py-2">
+            <div class="flex gap-4">
+              <img
+                class="size-12 rounded-full"
+                src="./images/fire_logo_02.jpg"
+                alt=""
+              />
+              <p class="font-semibold">
+                A1 Express (2021) 1080p WEB-DL [Dual Audio] [Hindi+Telugu] ESub
+                x264.mkv
+              </p>
+            </div>
+            <span class="text-gray-700 flex flex-col px-16 pt-1 leading-4">
+              <p>Siam Mahamud</p>
+              <p>50k views . 2 hours ago</p>
+            </span>
+          </div>
+        </div>
+        <div class="rounded-md">
+          <iframe
+            width="350"
+            height="208"
+            src="https://www.youtube.com/embed/82ivI2lCPbg?si=JDVKCn2WU3IXR6jW"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+          <div class="py-2">
+            <div class="flex gap-4">
+              <img
+                class="size-12 rounded-full"
+                src="./images/fire_logo_02.jpg"
+                alt=""
+              />
+              <p class="font-semibold">
+                A1 Express (2021) 1080p WEB-DL [Dual Audio] [Hindi+Telugu] ESub
+                x264.mkv
+              </p>
+            </div>
+            <span class="text-gray-700 flex flex-col px-16 pt-1 leading-4">
+              <p>Siam Mahamud</p>
+              <p>50k views . 2 hours ago</p>
+            </span>
+          </div>
+        </div>
+        <div class="rounded-md">
+          <iframe
+            width="350"
+            height="208"
+            src="https://www.youtube.com/embed/82ivI2lCPbg?si=JDVKCn2WU3IXR6jW"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+          <div class="py-2">
+            <div class="flex gap-4">
+              <img
+                class="size-12 rounded-full"
+                src="./images/fire_logo_02.jpg"
+                alt=""
+              />
+              <p class="font-semibold">
+                A1 Express (2021) 1080p WEB-DL [Dual Audio] [Hindi+Telugu] ESub
+                x264.mkv
+              </p>
+            </div>
+            <span class="text-gray-700 flex flex-col px-16 pt-1 leading-4">
+              <p>Siam Mahamud</p>
+              <p>50k views . 2 hours ago</p>
+            </span>
+          </div>
+        </div>
+        <div class="rounded-md">
+          <iframe
+            width="350"
+            height="208"
+            src="https://www.youtube.com/embed/82ivI2lCPbg?si=JDVKCn2WU3IXR6jW"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+          <div class="py-2">
+            <div class="flex gap-4">
+              <img
+                class="size-12 rounded-full"
+                src="./images/fire_logo_02.jpg"
+                alt=""
+              />
+              <p class="font-semibold">
+                A1 Express (2021) 1080p WEB-DL [Dual Audio] [Hindi+Telugu] ESub
+                x264.mkv
+              </p>
+            </div>
+            <span class="text-gray-700 flex flex-col px-16 pt-1 leading-4">
+              <p>Siam Mahamud</p>
+              <p>50k views . 2 hours ago</p>
+            </span>
+          </div>
+        </div>
+        <div class="rounded-md">
+          <iframe
+            width="350"
+            height="208"
+            src="https://www.youtube.com/embed/82ivI2lCPbg?si=JDVKCn2WU3IXR6jW"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+          <div class="py-2">
+            <div class="flex gap-4">
+              <img
+                class="size-12 rounded-full"
+                src="./images/fire_logo_02.jpg"
+                alt=""
+              />
+              <p class="font-semibold">
+                A1 Express (2021) 1080p WEB-DL [Dual Audio] [Hindi+Telugu] ESub
+                x264.mkv
+              </p>
+            </div>
+            <span class="text-gray-700 flex flex-col px-16 pt-1 leading-4">
+              <p>Siam Mahamud</p>
+              <p>50k views . 2 hours ago</p>
+            </span>
+          </div>
+        </div>
+        <div class="rounded-md">
+          <iframe
+            width="350"
+            height="208"
+            src="https://www.youtube.com/embed/82ivI2lCPbg?si=JDVKCn2WU3IXR6jW"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+          <div class="py-2">
+            <div class="flex gap-4">
+              <img
+                class="size-12 rounded-full"
+                src="./images/fire_logo_02.jpg"
+                alt=""
+              />
+              <p class="font-semibold">
+                A1 Express (2021) 1080p WEB-DL [Dual Audio] [Hindi+Telugu] ESub
+                x264.mkv
+              </p>
+            </div>
+            <span class="text-gray-700 flex flex-col px-16 pt-1 leading-4">
+              <p>Siam Mahamud</p>
+              <p>50k views . 2 hours ago</p>
+            </span>
+          </div>
+        </div>
+        <div class="rounded-md">
+          <iframe
+            width="350"
+            height="208"
+            src="https://www.youtube.com/embed/82ivI2lCPbg?si=JDVKCn2WU3IXR6jW"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+          <div class="py-2">
+            <div class="flex gap-4">
+              <img
+                class="size-12 rounded-full"
+                src="./images/fire_logo_02.jpg"
+                alt=""
+              />
+              <p class="font-semibold">
+                A1 Express (2021) 1080p WEB-DL [Dual Audio] [Hindi+Telugu] ESub
+                x264.mkv
+              </p>
+            </div>
+            <span class="text-gray-700 flex flex-col px-16 pt-1 leading-4">
+              <p>Siam Mahamud</p>
+              <p>50k views . 2 hours ago</p>
+            </span>
+          </div>
+        </div>
+
+        <!-- video-01 -->
+        <div class="">
+          <div class="shadow-sm rounded-md shadow-black w-[350px] bg-gray-100">
+            <video
+              controls
+              class="py-4"
+              src="./videos/A1 Express (2021) 1080p WEB-DL [Dual Audio] [Hindi+Telugu] ESub x264.mkv"
+            ></video>
+          </div>
+          <div class="py-2">
+            <div class="flex gap-4">
+              <img
+                class="size-12 rounded-full"
+                src="./images/fire_logo_02.jpg"
+                alt=""
+              />
+              <p class="font-semibold">
+                A1 Express (2021) 1080p WEB-DL [Dual Audio] [Hindi+Telugu] ESub
+                x264.mkv
+              </p>
+            </div>
+            <span class="text-gray-700 flex flex-col px-16 pt-1 leading-4">
+              <p>Siam Mahamud</p>
+              <p>50k views . 2 hours ago</p>
+            </span>
+          </div>
+        </div>
+        <!-- video-02 -->
+        <div class="">
+          <div class="shadow-sm rounded-md shadow-black w-[360px] bg-gray-100">
+            <video
+              controls
+              class="w-[360px] py-4"
+              src="./videos/Bade Miyan Chote Miyan 2024 Hindi (ORG 5.1) SouthFreak.com 720p WEB-DL x264 ESubs.mkv"
+            ></video>
+          </div>
+          <div class="py-2">
+            <div class="flex gap-4">
+              <img
+                class="size-12 rounded-full"
+                src="./images/fire_logo_02.jpg"
+                alt=""
+              />
+              <p class="font-semibold">
+                A1 Express (2021) 1080p WEB-DL [Dual Audio] [Hindi+Telugu] ESub
+                x264.mkv
+              </p>
+            </div>
+            <span class="text-gray-700 flex flex-col px-16 pt-1 leading-4">
+              <p>Siam Mahamud</p>
+              <p>50k views . 2 hours ago</p>
+            </span>
+          </div>
+        </div>
+        <!-- video-03 -->
+        <div class="">
+          <div class="shadow-sm rounded-md shadow-black w-[360px] bg-gray-100">
+            <video
+              controls
+              class="w-[360px] py-4"
+              src="./videos/Chandramukhi 2 (2023) Dual Hindi-Clean & Tamil HC WEB 720p.mkv"
+            ></video>
+          </div>
+          <div class="py-2">
+            <div class="flex gap-4">
+              <img
+                class="size-12 rounded-full"
+                src="./images/fire_logo_02.jpg"
+                alt=""
+              />
+              <p class="font-semibold">
+                A1 Express (2021) 1080p WEB-DL [Dual Audio] [Hindi+Telugu] ESub
+                x264.mkv
+              </p>
+            </div>
+            <span class="text-gray-700 flex flex-col px-16 pt-1 leading-4">
+              <p>Siam Mahamud</p>
+              <p>50k views . 2 hours ago</p>
+            </span>
+          </div>
+        </div>
+        <!-- video-04 -->
+        <div class="">
+          <div class="shadow-sm rounded-md shadow-black w-[360px] bg-gray-100">
+            <video
+              controls
+              class="w-[360px] py-4"
+              src="./videos/Doraemon Nobita and the Winged Braves (2001) REMASTERED 720p WEB-DL [Dual Audio] [Hin+Jap] x264.mkv"
+            ></video>
+          </div>
+          <div class="py-2">
+            <div class="flex gap-4">
+              <img
+                class="size-12 rounded-full"
+                src="./images/fire_logo_02.jpg"
+                alt=""
+              />
+              <p class="font-semibold">
+                A1 Express (2021) 1080p WEB-DL [Dual Audio] [Hindi+Telugu] ESub
+                x264.mkv
+              </p>
+            </div>
+            <span class="text-gray-700 flex flex-col px-16 pt-1 leading-4">
+              <p>Siam Mahamud</p>
+              <p>50k views . 2 hours ago</p>
+            </span>
+          </div>
+        </div>
+        <!-- video-05 -->
+        <div class="">
+          <div class="shadow-sm rounded-md shadow-black w-[360px] bg-gray-100">
+            <video
+              controls
+              class="w-[360px] py-4"
+              src="./videos/doramon.mkv"
+            ></video>
+          </div>
+          <div class="py-2">
+            <div class="flex gap-4">
+              <img
+                class="size-12 rounded-full"
+                src="./images/fire_logo_02.jpg"
+                alt=""
+              />
+              <p class="font-semibold">
+                A1 Express (2021) 1080p WEB-DL [Dual Audio] [Hindi+Telugu] ESub
+                x264.mkv
+              </p>
+            </div>
+            <span class="text-gray-700 flex flex-col px-16 pt-1 leading-4">
+              <p>Siam Mahamud</p>
+              <p>50k views . 2 hours ago</p>
+            </span>
+          </div>
+        </div>
+        <!-- video-06 -->
+        <div class="">
+          <div class="shadow-sm rounded-md shadow-black w-[360px] bg-gray-100">
+            <video
+              controls
+              class="w-[360px] py-4"
+              src="./videos/Epic (2013) Hindi Dubbed 720p WEB-HD .mkv"
+            ></video>
+          </div>
+          <div class="py-2">
+            <div class="flex gap-4">
+              <img
+                class="size-12 rounded-full"
+                src="./images/fire_logo_02.jpg"
+                alt=""
+              />
+              <p class="font-semibold">
+                A1 Express (2021) 1080p WEB-DL [Dual Audio] [Hindi+Telugu] ESub
+                x264.mkv
+              </p>
+            </div>
+            <span class="text-gray-700 flex flex-col px-16 pt-1 leading-4">
+              <p>Siam Mahamud</p>
+              <p>50k views . 2 hours ago</p>
+            </span>
+          </div>
+        </div>
+        <!-- video-07 -->
+        <div class="">
+          <div class="shadow-sm rounded-md shadow-black w-[360px] bg-gray-100">
+            <video
+              controls
+              class="w-[360px] py-4"
+              src="./videos/Gofile - Your all-in-one storage solution.mkv"
+            ></video>
+          </div>
+          <div class="py-2">
+            <div class="flex gap-4">
+              <img
+                class="size-12 rounded-full"
+                src="./images/fire_logo_02.jpg"
+                alt=""
+              />
+              <p class="font-semibold">
+                A1 Express (2021) 1080p WEB-DL [Dual Audio] [Hindi+Telugu] ESub
+                x264.mkv
+              </p>
+            </div>
+            <span class="text-gray-700 flex flex-col px-16 pt-1 leading-4">
+              <p>Siam Mahamud</p>
+              <p>50k views . 2 hours ago</p>
+            </span>
+          </div>
+        </div>
+        <!-- video-08 -->
+        <div class="">
+          <div class="shadow-sm rounded-md shadow-black w-[360px] bg-gray-100">
+            <video
+              controls
+              class="w-[360px] py-4"
+              src="./videos/HanuMan 2024 Hindi ORG  SouthFreak.com 720p WEB-DL x264 ESubs.mkv"
+            ></video>
+          </div>
+          <div class="py-2">
+            <div class="flex gap-4">
+              <img
+                class="size-12 rounded-full"
+                src="./images/fire_logo_02.jpg"
+                alt=""
+              />
+              <p class="font-semibold">
+                A1 Express (2021) 1080p WEB-DL [Dual Audio] [Hindi+Telugu] ESub
+                x264.mkv
+              </p>
+            </div>
+            <span class="text-gray-700 flex flex-col px-16 pt-1 leading-4">
+              <p>Siam Mahamud</p>
+              <p>50k views . 2 hours ago</p>
+            </span>
+          </div>
+        </div>
+        <!-- video-09 -->
+        <div class="">
+          <div class="shadow-sm rounded-md shadow-black w-[360px] bg-gray-100">
+            <video
+              controls
+              class="w-[360px] py-4"
+              src="./videos/Jack_And_Daniel_2021_New_Released_Hindi_Dubbed_Movie___Dileep%2C_Arjun_Sarja.mp4"
+            ></video>
+          </div>
+          <div class="py-2">
+            <div class="flex gap-4">
+              <img
+                class="size-12 rounded-full"
+                src="./images/fire_logo_02.jpg"
+                alt=""
+              />
+              <p class="font-semibold">
+                A1 Express (2021) 1080p WEB-DL [Dual Audio] [Hindi+Telugu] ESub
+                x264.mkv
+              </p>
+            </div>
+            <span class="text-gray-700 flex flex-col px-16 pt-1 leading-4">
+              <p>Siam Mahamud</p>
+              <p>50k views . 2 hours ago</p>
+            </span>
+          </div>
+        </div>
+        <!-- video-10 -->
+        <div class="">
+          <div class="shadow-sm rounded-md shadow-black w-[360px] bg-gray-100">
+            <video
+              controls
+              class="w-[360px] py-4"
+              src="./videos/Skanda (2023) Dual [Hindi (Clean) - Telugu] 720p.mkv"
+            ></video>
+          </div>
+          <div class="py-2">
+            <div class="flex gap-4">
+              <img
+                class="size-12 rounded-full"
+                src="./images/fire_logo_02.jpg"
+                alt=""
+              />
+              <p class="font-semibold">
+                A1 Express (2021) 1080p WEB-DL [Dual Audio] [Hindi+Telugu] ESub
+                x264.mkv
+              </p>
+            </div>
+            <span class="text-gray-700 flex flex-col px-16 pt-1 leading-4">
+              <p>Siam Mahamud</p>
+              <p>50k views . 2 hours ago</p>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./scrips.js"></script>
+  </body>
+</html>
